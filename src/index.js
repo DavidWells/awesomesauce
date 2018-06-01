@@ -8,4 +8,7 @@ window.netlifyIdentity = netlifyIdentity
 // You must run this once before trying to interact with the widget
 netlifyIdentity.init()
 
+const user = netlifyIdentity.currentUser();
+console.log('user', user)
+
 ReactDOM.render(<App />, document.getElementById('root'))
