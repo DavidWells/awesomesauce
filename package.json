@@ -15,8 +15,7 @@
     "node-fetch": "^2.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4",
-
+    "react-scripts": "1.1.4"
   },
   "peerDependencies": {
     "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption"
