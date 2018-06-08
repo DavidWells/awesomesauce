@@ -13,12 +13,10 @@
   "dependencies": {
     "jsonwebtoken": "^8.2.2",
     "netlify-identity-widget": "^1.4.12",
+    "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption",
     "node-fetch": "^2.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
-  },
-  "devDependencies": {
-    "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption"
   }
 }
