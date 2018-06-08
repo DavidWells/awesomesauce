@@ -8,7 +8,7 @@ exports.handler = function(event, context, callback) {
   const body = JSON.parse(event.body)
   const email = body.user.email
 
-  /** Debugger
+  //** Debugger
   console.log('event', event)
   console.log('context', context)
   /**/
