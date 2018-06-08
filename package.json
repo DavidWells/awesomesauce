@@ -3,15 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jsonwebtoken": "^8.2.2",
     "netlify-identity-widget": "^1.4.12",
+    "node-fetch": "^2.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "buildFunctions": "netlify-lambda build functions -o functions-build",
+    "build": "npm run buildFunctions && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption"
   }
 }
