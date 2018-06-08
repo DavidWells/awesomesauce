@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "buildFunctions": "netlify-lambda build functions -o functions-build",
+    "buildFunctions": "netlify-lambda build functions",
     "build": "npm run buildFunctions && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
@@ -12,7 +12,7 @@
   "dependencies": {
     "jsonwebtoken": "^8.2.2",
     "netlify-identity-widget": "^1.4.12",
-    "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption",
+    "netlify-lambda": "^0.4.0",
     "node-fetch": "^2.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
