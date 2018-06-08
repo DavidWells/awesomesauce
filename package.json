@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "prebuildFunctions": "yarn add git://github.com/netlify/netlify-lambda.git#addOutputDirOption",
     "buildFunctions": "netlify-lambda build functions -o functions-build",
     "build": "npm run buildFunctions && react-scripts build",
     "test": "react-scripts test --env=jsdom",
