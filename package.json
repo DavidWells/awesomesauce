@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "prebuildFunctions": "npm i git://github.com/netlify/netlify-lambda.git#addOutputDirOption",
     "buildFunctions": "netlify-lambda build functions -o functions-build",
     "build": "npm run buildFunctions && react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -17,7 +18,7 @@
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "netlify-lambda": "git://github.com/netlify/netlify-lambda.git#addOutputDirOption"
   }
 }
