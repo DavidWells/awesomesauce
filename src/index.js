@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import netlifyIdentity from 'netlify-identity-widget'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import netlifyIdentity from 'netlify-identity-widget'
 
-window.netlifyIdentity = netlifyIdentity
 // You must run this once before trying to interact with the widget
 netlifyIdentity.init()
 
-const user = netlifyIdentity.currentUser();
-console.log('user', user)
+// Main application wrapped with Redux & React Router
+const app = (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(app, document.getElementById('root'))
