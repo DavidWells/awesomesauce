@@ -51,7 +51,6 @@ function enrichProfileFullContact(email) {
   }
   // make request to fullcontact
   console.log(`Searching for ${email} in fullcontact`)
-  console.log('fetch', fetch)
   return fetch(`https://api.fullcontact.com/v2/person.json?email=${email}`, {
     method: 'POST',
     headers: {
