@@ -28,6 +28,7 @@ function checkAuth(authToken) {
 exports.handler = function(event, context, callback) {
   console.log('protected function!')
   const claims = context.clientContext && context.clientContext.user
+  console.log('claims', claims)
   if (!claims) {
     return callback(null, {
       statusCode: 401,

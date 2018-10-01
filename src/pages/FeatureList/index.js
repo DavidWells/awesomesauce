@@ -60,5 +60,3 @@ export default class FeatureList extends React.Component {
     )
   }
 }
-
-export default FeatureList
