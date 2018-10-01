@@ -61,7 +61,7 @@ class App extends Component {
         <header className="app-header">
           <img src={logo} className="app-logo" alt="logo" />
           <div>
-            <h1 className="app-title">Use your voice!</h1>
+            <h1 className="app-title">Use your voice!!</h1>
             <p>Dreaming of a new feature? Help us build awesome stuff.
               <br/><br/>
               Upvote or submit feature requests!
