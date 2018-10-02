@@ -5,6 +5,7 @@ import { jsonBodyParser, validator, httpErrorHandler } from 'middy/middlewares'
 const businessLogic = (event, context, callback) => {
   // event.body has already been turned into an object by `jsonBodyParser` middleware
   console.log('event.body', event.body)
+  console.log('typeof event.body', typeof event.body)
   const { name } = event.body
   console.log('name', name)
   return callback(null, {
