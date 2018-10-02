@@ -24,7 +24,7 @@ const schema = {
     type: 'object',
     properties: {
       body: {
-        type: 'string',
+        type: 'object',
         required: ['name'],
         properties: {
           name: { type: 'string' },
@@ -57,6 +57,6 @@ exports.handler = middy(businessLogic)
   // parses the request body when it's a JSON and converts it to an object
   .use(jsonBodyParser())
   // validates the input
-  // .use(validator({ inputSchema: schema.input }))
+  .use(validator({ inputSchema: schema.input }))
   // handles common http errors and returns proper responses
   .use(httpErrorHandler())
