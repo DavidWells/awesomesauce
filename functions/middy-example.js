@@ -6,6 +6,7 @@ const businessLogic = (event, context, callback) => {
   // event.body has already been turned into an object by `jsonBodyParser` middleware
   console.log('event.body', event.body)
   console.log('typeof event.body', typeof event.body)
+  console.log('event.headers', event.headers)
   const { name } = event.body
   console.log('name', name)
   return callback(null, {
@@ -55,6 +56,6 @@ exports.handler = middy(businessLogic)
   // parses the request body when it's a JSON and converts it to an object
   .use(jsonBodyParser())
   // validates the input
-  .use(validator({ inputSchema: schema.input }))
+  // .use(validator({ inputSchema: schema.input }))
   // handles common http errors and returns proper responses
   .use(httpErrorHandler())
