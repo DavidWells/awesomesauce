@@ -22,7 +22,7 @@ const schema = {
     type: 'object',
     properties: {
       body: {
-        type: 'object',
+        type: 'string',
         required: ['name'],
         properties: {
           name: { type: 'string' },
