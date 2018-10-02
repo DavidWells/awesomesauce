@@ -14,7 +14,7 @@ import './App.css'
 class App extends Component {
   componentDidMount() {
     /* Register listeners on identity widget events */
-    netlifyIdentity.on("login", () => {
+    netlifyIdentity.on('login', () => {
       /* Close netlify identity modal on login */
       netlifyIdentity.close()
       /* Grab user data */
@@ -22,7 +22,7 @@ class App extends Component {
       console.log('login complete', user)
       window.location.href = window.location.href
     })
-    netlifyIdentity.on("logout", () => {
+    netlifyIdentity.on('logout', () => {
       this.setState({ loggedIn: false })
       window.location.href = window.location.href
     })
@@ -69,35 +69,35 @@ class App extends Component {
           </div>
         </header>
         <Route {...props} render={(p) => {
-           // loading state
-           // if (props.loading || props.location.pathname === '/callback') {
-           //   return <Loading />
-           // }
+          // loading state
+          // if (props.loading || props.location.pathname === '/callback') {
+          //   return <Loading />
+          // }
 
-           // non-authed routes
-           if (!user) {
-             return (
-               <Switch>
-                 <Route path={`/`} exact component={FeatureList} />
-                 <Route render={() => <PleaseLogin logIn={this.logIn} {...props} />}  />
-               </Switch>
-             )
-           }
+          // non-authed routes
+          if (!user) {
+            return (
+              <Switch>
+                <Route path={`/`} exact render={() => <FeatureList {...props} />} />
+                <Route render={() => <PleaseLogin logIn={this.logIn} {...props} />} />
+              </Switch>
+            )
+          }
 
-           // Protected routes
-           return (
-             <Switch>
-               <Route path={`/`} exact render={FeatureList} />
-               <Route path={`/add`} exact component={FeatureAdd} />
-               {/* <Route path={`/features/:id/edit`} component={FeatureEdit} />
+          // Protected routes
+          return (
+            <Switch>
+              <Route path={`/`} exact render={FeatureList} />
+              <Route path={`/add`} exact component={FeatureAdd} />
+              {/* <Route path={`/features/:id/edit`} component={FeatureEdit} />
                <Route path={`/features/:id`} component={FeatureView} /> */}
-               <Route path={`/profile`} render={profile} />
-               {/* <Redirect to={`/`} /> */}
-               <Route component={NotFound} />
-             </Switch>
-           )
-         }}
-         />
+              <Route path={`/profile`} render={profile} />
+              {/* <Redirect to={`/`} /> */}
+              <Route component={NotFound} />
+            </Switch>
+          )
+        }}
+        />
       </div>
     )
   }
@@ -112,7 +112,7 @@ const PleaseLogin = (props) => {
     return (
       <AppLayout>
         <h3>You must be logged in to view this page</h3>
-        <button className="grey-btn" onClick={() => { netlifyIdentity.open()}}>
+        <button className="grey-btn" onClick={() => { netlifyIdentity.open() }}>
           Log In
         </button>
       </AppLayout>
