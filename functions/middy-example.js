@@ -1,5 +1,5 @@
 import middy from 'middy'
-import { jsonBodyParser, validator, httpErrorHandler } from 'middy/middlewares'
+import { jsonBodyParser, validator, httpErrorHandler, httpHeaderNormalizer } from 'middy/middlewares'
 
 /* Normal lambda code */
 const businessLogic = (event, context, callback) => {
@@ -53,6 +53,7 @@ const schema = {
 exports.schema = schema
 
 exports.handler = middy(businessLogic)
+  .use(httpHeaderNormalizer())
   // parses the request body when it's a JSON and converts it to an object
   .use(jsonBodyParser())
   // validates the input
