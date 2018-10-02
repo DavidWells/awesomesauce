@@ -87,7 +87,7 @@ class App extends Component {
           // Protected routes
           return (
             <Switch>
-              <Route path={`/`} exact render={FeatureList} />
+              <Route path={`/`} exact render={() => <FeatureList {...props} />} />
               <Route path={`/add`} exact component={FeatureAdd} />
               {/* <Route path={`/features/:id/edit`} component={FeatureEdit} />
                <Route path={`/features/:id`} component={FeatureView} /> */}
