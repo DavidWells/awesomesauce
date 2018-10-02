@@ -1,11 +1,25 @@
 import React from 'react'
 import AppLayout from '../../fragments/AppLayout'
+import netlifyIdentity from 'netlify-identity-widget'
+
+// Get JWT token of current user
+function generateHeaders() {
+  const headers = { 'Content-Type': 'application/json' }
+  if (netlifyIdentity.currentUser()) {
+    return netlifyIdentity.currentUser().jwt().then((token) => {
+      return { ...headers, Authorization: `Bearer ${token}` }
+    })
+  }
+  return Promise.resolve(headers)
+}
 
 export default class FeatureList extends React.Component {
-  callApi = () => {
-    console.log('calling API')
+  async callApi () {
+    const authHeaders = await generateHeaders()
+
     return fetch('/.netlify/functions/protected-endpoint', {
       method: 'POST',
+      headers: authHeaders,
       body: JSON.stringify({
         text: 'hi'
       })
