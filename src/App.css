@@ -102,6 +102,9 @@ button:focus, button:hover {
   align-items: center;
   justify-content: center;
 }
+.feature-card-voting-disabled {
+  color: #a5a1a1;
+}
 .feature-card-voting-up, .feature-card-voting-down {
   cursor: pointer;
 }

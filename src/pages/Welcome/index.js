@@ -4,7 +4,7 @@ export default class Welcome extends React.Component {
   render() {
     return (
       <div>
-        Welcome
+        <p>Welcome! Please login to submit a feature</p>
       </div>
     )
   }

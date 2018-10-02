@@ -10,7 +10,7 @@ exports.handler = function(event, context, callback) {
     return callback(null, {
       statusCode: 401,
       body: JSON.stringify({
-        data: 'NOT ALLOWED'
+        data: 'NOT ALLOWED TO EXPLODE!'
       })
     })
   }
@@ -23,7 +23,7 @@ exports.handler = function(event, context, callback) {
   return callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      data: 'SECRET STUFFFFFFFFFFFFFF OOOOOOOooooooooooo'
+      data: 'KABOOM'
     })
   })
 }

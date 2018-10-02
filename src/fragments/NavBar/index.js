@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { callProtectedEndpoint } from '../../utils/api'
 
 class NavBar extends Component {
   render() {
@@ -18,6 +19,9 @@ class NavBar extends Component {
         <a href="https://github.com/netlify/awesomesauce">
           View on Github
         </a>
+        <button style={{marginLeft: 20, background: 'pink'}} onClick={() => callProtectedEndpoint('explode-application')}>
+          EXPLODE APPLICATION
+        </button>
         <button style={{marginLeft: 20}} onClick={() => auth.open()}>
           Log In
         </button>
@@ -43,6 +47,9 @@ class NavBar extends Component {
           <Link style={{marginLeft: 20}} to={`/add/`} className={'button-primary'}>
             Request a Feature
           </Link>
+          <button style={{marginLeft: 20, background: 'pink'}} onClick={() => callProtectedEndpoint('explode-application')}>
+            EXPLODE APPLICATION
+          </button>
           <button style={{marginLeft: 20}} onClick={() => auth.logout()}>
             Log Out
           </button>

@@ -1,35 +1,11 @@
 import React from 'react'
 import AppLayout from '../../fragments/AppLayout'
-import netlifyIdentity from 'netlify-identity-widget'
-
-// Get JWT token of current user
-function generateHeaders() {
-  const headers = { 'Content-Type': 'application/json' }
-  if (netlifyIdentity.currentUser()) {
-    return netlifyIdentity.currentUser().jwt().then((token) => {
-      return { ...headers, Authorization: `Bearer ${token}` }
-    })
-  }
-  return Promise.resolve(headers)
-}
+import { callProtectedEndpoint } from '../../utils/api'
 
 export default class FeatureList extends React.Component {
-  async callApi () {
-    const authHeaders = await generateHeaders()
-
-    return fetch('/.netlify/functions/protected-endpoint', {
-      method: 'POST',
-      headers: authHeaders,
-      body: JSON.stringify({
-        text: 'hi'
-      })
-    }).then((resp) => {
-      return resp.json()
-    }).then((data) => {
-      alert(JSON.stringify(data))
-    })
-  }
   render() {
+    const { user } = this.props
+    console.log('user', user)
     const features = [
       {
         title: 'Add cool stuff',
@@ -45,13 +21,24 @@ export default class FeatureList extends React.Component {
       }
     ]
 
+    const arrowStyle = (!user) ? 'feature-card-voting-disabled' : ''
+    const titleTag = (!user) ? 'You must login to vote' : ''
+
     const list = features.map((feature, i) => {
       return (
         <div className='feature-card' key={i}>
-          <div className='feature-card-voting'>
-            <div className='feature-card-voting-up' onClick={this.callApi}>▲</div>
-            <div className='feature-card-voting-count'>12</div>
-            <div className='feature-card-voting-down'>▼</div>
+          <div className={`feature-card-voting ${arrowStyle}`} title={titleTag}>
+            <div
+              className='feature-card-voting-up'
+              onClick={() => callProtectedEndpoint('protected-endpoint')}>
+              ▲
+            </div>
+            <div className='feature-card-voting-count'>{12 - (i * 2)}</div>
+            <div
+              className='feature-card-voting-down'
+              onClick={() => callProtectedEndpoint('protected-endpoint')}>
+              ▼
+            </div>
           </div>
           <div className='feature-card-content'>
             <div className='feature-card-title'>
