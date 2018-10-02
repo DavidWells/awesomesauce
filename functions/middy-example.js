@@ -4,6 +4,7 @@ import { jsonBodyParser, validator, httpErrorHandler } from 'middy/middlewares'
 /* Normal lambda code */
 const businessLogic = (event, context, callback) => {
   // event.body has already been turned into an object by `jsonBodyParser` middleware
+  console.log('event.body', event.body)
   const { name } = event.body
   console.log('name', name)
   return callback(null, {
@@ -21,7 +22,7 @@ const schema = {
     type: 'object',
     properties: {
       body: {
-        type: 'string',
+        type: 'object',
         required: ['name'],
         properties: {
           name: { type: 'string' },
