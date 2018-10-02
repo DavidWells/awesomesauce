@@ -4,11 +4,7 @@ import { jsonBodyParser, validator, httpErrorHandler, httpHeaderNormalizer } fro
 /* Normal lambda code */
 const businessLogic = (event, context, callback) => {
   // event.body has already been turned into an object by `jsonBodyParser` middleware
-  console.log('event.body', event.body)
-  console.log('typeof event.body', typeof event.body)
-  console.log('event.headers', event.headers)
   const { name } = event.body
-  console.log('name', name)
   return callback(null, {
     statusCode: 200,
     body: JSON.stringify({
