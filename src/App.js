@@ -98,6 +98,7 @@ class App extends Component {
           )
         }}
         />
+        <a href='https://get-referral-data.netlify.com/'>Testing two</a>
       </div>
     )
   }
