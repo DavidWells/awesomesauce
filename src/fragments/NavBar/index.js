@@ -1,8 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { callProtectedEndpoint } from '../../utils/api'
+import netlifyIdentity from 'netlify-identity-widget'
 
 class NavBar extends Component {
+  callAddonApi = () => {
+    netlifyIdentity.currentUser().jwt().then((token) => {
+      console.log('calling /.netlify/demo', token)
+      fetch('/.netlify/demo', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          text: 'hi'
+        })
+      }).then((resp) => {
+        console.log('resp', resp)
+        return resp.json()
+      }).then((data) => {
+        console.log('data', data)
+        alert(JSON.stringify(data))
+      })
+    })
+  }
   render() {
     const { auth, user } = this.props
     console.log('auth', auth)
@@ -19,6 +40,9 @@ class NavBar extends Component {
         <a href="https://github.com/netlify/awesomesauce">
           View on Github
         </a>
+        <button style={{marginLeft: 20, background: 'pink'}} onClick={this.callAddonApi}>
+          Call API
+        </button>
         <button style={{marginLeft: 20, background: 'pink'}} onClick={() => callProtectedEndpoint('explode-application')}>
           EXPLODE APPLICATION
         </button>
@@ -47,6 +71,9 @@ class NavBar extends Component {
           <Link style={{marginLeft: 20}} to={`/add/`} className={'button-primary'}>
             Request a Feature
           </Link>
+          <button style={{marginLeft: 20, background: 'pink'}} onClick={this.callAddonApi}>
+            Call API
+          </button>
           <button style={{marginLeft: 20, background: 'pink'}} onClick={() => callProtectedEndpoint('explode-application')}>
             EXPLODE APPLICATION
           </button>
