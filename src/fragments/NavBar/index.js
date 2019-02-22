@@ -5,12 +5,33 @@ import netlifyIdentity from 'netlify-identity-widget'
 
 class NavBar extends Component {
   callAddonApi = () => {
-    netlifyIdentity.currentUser().jwt().then((token) => {
-      console.log('calling /.netlify/demo', token)
-      fetch('/.netlify/demo', {
+    const apiUrl = '/.netlify/demo'
+    const user = netlifyIdentity.currentUser()
+    if (user) {
+      user.jwt().then((token) => {
+        console.log('calling /.netlify/demo', token)
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            text: 'hi'
+          })
+        }).then((resp) => {
+          console.log('resp', resp)
+          return resp.json()
+        }).then((data) => {
+          console.log('data', data)
+          alert(JSON.stringify(data))
+        })
+      })
+    } else {
+      console.log('calling /.netlify/demo no auth')
+      fetch(apiUrl, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer xxx`
         },
         body: JSON.stringify({
           text: 'hi'
@@ -22,7 +43,7 @@ class NavBar extends Component {
         console.log('data', data)
         alert(JSON.stringify(data))
       })
-    })
+    }
   }
   render() {
     const { auth, user } = this.props
