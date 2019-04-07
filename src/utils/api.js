@@ -16,10 +16,7 @@ export async function callProtectedEndpoint(functionName) {
 
   // Set up an environment-specific path for lambda functions.
   let lambdaPath = `/.netlify/functions/${functionName}`
-  if (window.location.hostname && window.location.hostname === 'localhost') {
-    lambdaPath = `http://localhost:9000/${functionName}`
-  }
-
+  console.log('lambdaPath', lambdaPath)
   return fetch(lambdaPath, {
     method: 'POST',
     headers: authHeaders,
