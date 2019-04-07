@@ -1,5 +1,5 @@
-import middy from 'middy'
-import { jsonBodyParser, validator, httpErrorHandler, httpHeaderNormalizer } from 'middy/middlewares'
+const middy = require('middy')
+const { jsonBodyParser, validator, httpErrorHandler, httpHeaderNormalizer } = require('middy/middlewares')
 
 /* Normal lambda code */
 const businessLogic = (event, context, callback) => {

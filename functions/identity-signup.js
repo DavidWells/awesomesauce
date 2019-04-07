@@ -1,6 +1,8 @@
 /* Triggered when a user signs up via Netlify Identity. */
-import fetch from 'node-fetch'
-const FULLCONTACT_KEY = process.env.FULLCONTACT_KEY
+const fetch = require('node-fetch')
+const {
+  FULLCONTACT_KEY
+} = process.env
 
 // function test(event, context, callback) {
 exports.handler = function(event, context, callback) {
